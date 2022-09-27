@@ -1,0 +1,24 @@
+<!-- //seperate header ejs file for the header -->
+<%- include('partials/header') -%>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <ul class="row list-unstyled">
+       
+        <!-- //grab ever post from all users and display them by data using a for loop -->
+        <% for(var i=0; i<profile.length; i++) {%>
+          <li class="col-6 justify-content-between mt-5">
+            <a href="/profile/<%= profile[i].dogName%>&<%= profile[i].user%>">
+              <h2><%= profile[i].dogName%></h2>
+            <a>
+            
+            <!-- //link to the individual post name by the profile unique id -->
+            <a href="/profile/<%= profile[i].dogName%>&<%= profile[i].user%>">
+              <img class="img-fluid" src="<%= profile[i].imageProfile%>">
+            </a>
+          </li>
+        <% } %>
+        </ul>
+    </div>
+  </div>  
+  <!-- //seperate header ejs file for the header -->
+<%- include('partials/footer') -%>
