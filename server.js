@@ -17,8 +17,13 @@ const postRoutes = require("./routes/posts");
 const commentRoutes = require("./routes/comment")
 const friendRoutes = require("./routes/friendFinder")
 const profileRoutes = require("./routes/profile")
+const messageRoutes = require("./routes/message")
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
+
+
+
+
 
 // Passport config
 require("./config/passport")(passport);
@@ -66,6 +71,8 @@ app.use("/post", postRoutes);
 app.use("/comment", commentRoutes);
 app.use("/friendRoutes", friendRoutes);
 app.use("/profile", profileRoutes);
+app.use("/message", messageRoutes)
+
 
 //Server Running
 //listening for all the requests 

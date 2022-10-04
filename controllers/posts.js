@@ -32,6 +32,7 @@ module.exports = {
   getPost: async (req, res) => {
     console.log("hello")
     try {
+      console.log(req.params.id)
       //find post in the database using the id tag of the unique post
       const post = await Post.findById(req.params.id);
       const profile = await Profile.findById(req.params.id)
@@ -39,6 +40,21 @@ module.exports = {
       const comments = await Comment.find({post: req.params.id}).sort({createdAt: "asc"}).lean()
       //render the ejs and passing it the post data
       res.render("post.ejs", { post: post, user: req.user, comments: comments, profile: profile});
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  refreshPost: async (req, res) => {
+    console.log("get controller for refresh")
+    try {
+      //find post in the database using the id tag of the unique post
+      const post = await Post.findById(req.params.id);
+      const profile = await Profile.findById(req.params.id)
+      //finding all comments for this post
+      const comments = await Comment.find({post: req.params.id}).sort({createdAt: "asc"}).lean()
+      //render the ejs and passing it the post data
+      res.json( { post: post, user: req.user, comments: comments, profile: profile});
+      
     } catch (err) {
       console.log(err);
     }

@@ -1,12 +1,49 @@
 <!-- //reuseable ejs header in the partials folder -->
 <%- include('partials/header') -%>
+
+
+
 <div class="container">
+  <div class="mt-5">
+    <h2>Messages:</h2>
+    <div id ="messages" class="messages">
+      <ul>
+          <% for(var i=0; i<messages.length; i++) {%>
+              <li>
+              <span><h3><%=messages[i].message[0]%>:</h3></span>  <span><%=messages[i].message[1]%></span>
+              </li>
+            <% } %>
+      </ul>           
+     
+    </div>
+    <!-- //form for messaging section -->
+    <!-- <form  id="messageReplyForm" action="/message/<%= profile[0].userName%>/<%= profile[0].user %>" method="POST">
+      <div class="mb-3">
+          <label for="message" class="form-label">Message <%= profile[0].userName%></label>
+          <textarea type="text" class="form-control" id="message" name="message"> </textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+    </form> -->
+    <!-- form to sumbit a new post request with the route post/createPost-->
+    <form  id="messageForm" action="/message/<%= profile[0].userName%>/<%= profile[0].user %>" method="POST">
+      <div class="mb-3">
+          <label for="message" class="form-label">Message <%= profile[0].userName%></label>
+          <textarea type="text" class="form-control" id="message" name="message"> </textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+    </form>
+  </div>
+
+
+  <div class="col-2 justify-content-between mt-5" id = "messageBtn">
+    <button class="btn btn-primary">Message <%= profile[0].userName%></button>
+  </div>
   <form action="/profile/profileView" enctype="multipart/form-data" method="POST">
     <div class="row mt-5">
         <div>
             <div  class="col-2 justify-content-between mt-5"><img class="img-fluid" src="<%= profile[0].imageProfile %> "></div>
               <!-- display user's name -->
-                <p><strong>User Name</strong>: <%= user.userName %></p>      
+                <p><strong>User Name</strong>: <%= profile[0].userName %></p>      
                 <p><strong>Dog's Name: <%=profile[0].dogName%> </p>
                 <p>userAbout: <%= profile[0].userAbout%></p>
                 <p>Location: <%=profile[0].areaCode%></p>
@@ -17,9 +54,6 @@
         <a href="/logout" class="col-3 btn btn-primary">Logout</a>
    </div>
   </form>
-
-          
-          
 
 
       <!-- //this section displays all the users past posts -->
@@ -41,5 +75,7 @@
         </div>  
       </div>  
 </div>
+<!-- //local js for profileview -->
+<script src='../js/profileView.js'></script>
 <!-- //this is the reusable ejs foot -->
 <%- include('partials/footer') -%>

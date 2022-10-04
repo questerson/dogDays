@@ -1,0 +1,24 @@
+#hidden {
+    background-color: rgb(255, 198, 198);
+}
+#visible { 
+    background-color: rgb(213, 213, 234);
+}
+
+#messageForm { 
+     background-color: aqua;
+     display: none;
+}
+
+#messages {
+    background-color: royalblue;
+    height: 300px;
+    overflow-y: scroll;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y proximity;
+    flex-direction: column-reverse;
+    display: flex;
+}
+#messages > ul > li:last-child {
+    scroll-snap-align: end;
+}

@@ -5,6 +5,7 @@ const ProfileSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  
   imageProfile: {
     type: String,
     require: true,
@@ -30,13 +31,17 @@ const ProfileSchema = new mongoose.Schema({
     require: true,
   },
   areaCode:{
-    type: Number,
+    type: String,
     required: true,
   },
   user: {
     //grabbing the user id using the User Schema Moongoose will atomatically name the collection name the models name with an s so "Posts"
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+  },
+  userName: {
+   type: String,
+   ref: "user" 
   },
   createdAt: {
     //setting the data created will use this to display the time and date 

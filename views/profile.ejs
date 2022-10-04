@@ -1,10 +1,15 @@
 <!-- //reuseable ejs header in the partials folder -->
 <%- include('partials/header') -%>
 <div class="container">
-  <form action="/profile/profileCreate" enctype="multipart/form-data" method="POST">
+
+<div class="profileEdit">
+ <% let profileSwitch = true  %>
+  <%if (profileSwitch == true) { %> 
+    <!-- //<script> document.location.href = '/feed' </script> -->
+  <form id="hidden" action="/profile/profileCreate" enctype="multipart/form-data" method="POST">
+    <%}%> 
     <div class="row mt-5">
         <div>
-          
               <!-- display user's name -->
                 <p><strong>User Name</strong>: <%= user.userName %></p>
               <!-- display user's email    -->
@@ -67,12 +72,12 @@
             <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
    </div>
   </form>
-
+</div>
           
           <div class="mt-5">
             <h2>Add photos to your Feed</h2>
             <!-- form to sumbit a new post request with the route post/createPost-->
-            <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+            <form  id="visible" action="/post/createPost" enctype="multipart/form-data" method="POST">
               <div class="mb-3">
                   <label for="title" class="form-label">Title</label>
                   <input type="text" class="form-control" id="title" name="title">
@@ -111,5 +116,7 @@
         </div>  
       </div>  
 </div>
+//local js for messaging
+
 <!-- //this is the reusable ejs foot -->
 <%- include('partials/footer') -%>
