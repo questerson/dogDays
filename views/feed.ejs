@@ -1,5 +1,11 @@
 <!-- //seperate header ejs file for the header -->
 <%- include('partials/header') -%>
+
+
+
+
+
+
   <div class="container">
     <div class="row justify-content-center mt-5">
       <ul class="row list-unstyled">
@@ -11,7 +17,7 @@
               <a>
             <!-- //link to the individual post name by the posts unique id -->
             <a href="/post/<%= posts[i]._id%>">
-              <img class="w-16 md:w-32 lg:w-48" class="img-fluid" src="<%= posts[i].image%>">
+              <img class="img-fluid" src="<%= posts[i].image%>">
             </a>
           </li>
         <% } %>
